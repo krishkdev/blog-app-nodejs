@@ -72,6 +72,20 @@ h3 {
 
 /* index styles */
 /* details styles */
+.details {
+  position: relative;
+}
+.delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  padding: 8px;
+}
+.delete:hover {
+  cursor: pointer;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+}
 /* create styles */
 .create-blog form {
   max-width: 400px;
@@ -103,4 +117,14 @@ textarea {
   border: 0;
   font-size: 1.2em;
   cursor: pointer;
+}
+
+.blogs a {
+  display: block;
+  margin: 40px 0;
+  padding-left: 30px;
+  border-left: 6px solid crimson;
+}
+.blogs a:hover h3 {
+  color: crimson;
 }

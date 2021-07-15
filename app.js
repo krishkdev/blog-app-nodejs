@@ -1,4 +1,5 @@
 //All Imports
+const { render } = require("ejs");
 const express = require("express");
 const mongoose = require("mongoose");
 const Blog = require("./models/blog");
@@ -30,6 +31,7 @@ app.set("view engine", "ejs");
 
 //Static files middleware
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 
 //mongoose and mongo sandbox routes
 // app.get("/add-blog", (req, res) => {
@@ -88,12 +90,45 @@ app.get("/blogs", (req, res) => {
     });
 });
 
+app.post("/blogs", (req, res) => {
+  const blog = new Blog(req.body);
+
+  blog
+    .save()
+    .then((result) => {
+      res.redirect("/blogs");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 app.get("/about-us", (req, res) => {
   res.redirect("/about");
 });
 
 app.get("/blogs/create", (req, res) => {
   res.render("create", { title: "Create a new Blog" });
+});
+
+app.get("/blogs/:id", (req, res) => {
+  const id = req.params.id;
+  Blog.findById(id)
+    .then((result) => {
+      res.render("details", { blog: result, title: "Blog Details" });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+app.delete("/blogs/:id", (req, res) => {
+  const id = req.params.id;
+  Blog.findByIdAndDelete(id)
+    .then((result) => {
+      res.json({ redirect: "/blogs" });
+    })
+    .catch((err) => console.log(err));
 });
 
 app.use((req, res) => {
