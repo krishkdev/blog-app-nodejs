@@ -1,4 +1,4 @@
-# blog-app-nodejs
+# Blog app using nodejs
 
 A CRUD blog app using nodejs and mongodb. To test this app, click the link given below.
 
