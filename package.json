@@ -2,13 +2,13 @@
   "name": "blog-site-nodejs",
   "version": "1.0.0",
   "description": "Blog site using nodejs",
-  "main": "server.js",
+  "main": "app.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "keywords": [
     "blog",
